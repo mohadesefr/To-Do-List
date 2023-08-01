@@ -2,6 +2,8 @@ const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
 
 function addTask() {
+
+  // add task user write
   if (inputBox.value === "") {
     alert("You must write something!");
   } else {
@@ -9,6 +11,7 @@ function addTask() {
     li.innerHTML = inputBox.value;
     listContainer.appendChild(li);
 
+    // add button to task
     let span = document.createElement("span");
     span.innerHTML = "\u00d7";
     li.appendChild(span);
@@ -17,16 +20,15 @@ function addTask() {
   saveData();
 }
 
-listContainer.addEventListener(
-  "click",
-  function (e) {
+// what happen if you click to check the task or remove it
+listContainer.addEventListener("click", function (e) {
+  
     if (e.target.tagName === "LI") {
       e.target.classList.toggle("checked");
       saveData();
     } else if (e.target.tagName === "SPAN") {
       e.target.parentElement.remove();
       saveData();
-      
     }
   },
   false
